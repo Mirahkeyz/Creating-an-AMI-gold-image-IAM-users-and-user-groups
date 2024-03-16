@@ -25,6 +25,7 @@ b. Verify the Management group can’t view anything but S3 and even then, can�
 c. Verify that the Help Desk can launch EC2s and create S3 buckets but can’t use some of the other AWS services that you haven’t given access to.
 
 — Have Help Desk deploy and launch a Windows Server 2022 EC2.
+
 — Verify that the Developer can RDP into the Windows Server.
 
 We know have knowledge of what the first task requires, so let’s get started!!!
