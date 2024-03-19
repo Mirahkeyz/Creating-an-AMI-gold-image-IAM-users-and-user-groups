@@ -136,6 +136,135 @@ Once logged into Manage1, navigate to the S3 console and see if the user is able
 
 The management group is able to view the bucket but cannot access due to Insufficient permissions.
 
+![Snipe 18](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/e2dbb999-1157-4ec0-a214-13002f896af8)
+
+If you click on Insufficient permissions, you will get a popup detailing what is needed.
+
+![Snipe 19](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/bf8bd6b7-6cf9-481c-9bbe-c35e4fe4521e)
+
+let’s head back into IAM in our Admin account and add these permissions to the Group.
+
+![Snipe 20](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/cdae6bf6-cff7-412d-b6a3-0bf46a985694)
+
+Now that we have added the permissions, go ahead and save them then head back to the Manage1 account and check if the user is able to view the bucket contents.
+
+The insufficient access message is now gone.
+
+![Snipe 21](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/bc1f3a74-0e68-4f11-ba5f-93c58ac224d8)
+
+But there is another permission that we need to add.
+
+![Snipe 22](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/94c56062-cb8d-43ad-93f3-ff2b08e37653)
+
+Head back into the policy editor for the Management group and add s3:ListBucket action.
+
+Now back in the Manage1 account, we can now see inside of the bucket.
+
+![Snipe 23](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/c2ecbec7-cf81-4806-bc54-4ab37130c8ad)
+
+Manage1 can also upload files to the bucket.
+
+![Snipe 24](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/2358a470-fa33-40e4-9f14-d220430d3477)
+
+But can Manage1 create a new bucket?…..
+
+![Snipe 25](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/bef3a86e-9bcf-47eb-b2f8-ea52831e3f86)
+
+Nor is the user able to delete objects…This is good!
+
+The user is also unable to access any other AWS services. We have met the requirements for this user group.
+
+The last group we need to test is the Developer group. We will need to log into Dev1.
+
+In the EC2 console, Dev1 is able to view the instance that was created by the Helpdesk.
+
+![Snipe 26](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/e174da02-9764-43af-91f7-0d8c31312acf)
+
+Now let’s try to see if Dev1 can RDP into it. Right Click on the EC2 instance then choose Connect. You will see errors pop up due to not having sufficient permissions.
+
+![Snipe 27](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/02281c5a-f8bf-44df-9a0d-734b688548b8)
+
+This is Ok. Dev1 will not be accessing the EC2 instance via console. Instead, we will have the Admin account log into the Instance and create an account for the user.
+
+Dev1 is able to download the the RDP file. Go ahead and download it.
+
+Now log into the AWS console as the admin. Go into EC2 and connect as the admin. You will need the keypair that was created with the instance in order to decrypt the Admin password.
+
+![Snipe 28](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/ecc8f6a5-5274-44e9-972f-60090f2fdf18)
+
+Once the Admin is logged in, search for Local Users and Groups and create a Dev1 user. For this project I will be adding him to the Admin group on the server.
+
+![Snipe 29](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/04438916-4b59-4f5e-a91c-f7d2cff20066)
+
+![Snipe 30](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/e30d44a7-c360-41a4-9315-0ab40bef8828)
+
+Success!!! Dev1 was able to RDP into the Prod server.
+
+![Snipe 31](https://github.com/Mirahkeyz/Creating-an-AMI-gold-image-IAM-users-and-user-groups/assets/134533695/1435ff67-0bda-4151-81b3-b75dcbc7469c)
+
+# Tier 2: Advanced
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
